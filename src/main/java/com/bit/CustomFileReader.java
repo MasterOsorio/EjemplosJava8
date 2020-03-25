@@ -2,6 +2,7 @@ package com.bit;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,18 +12,37 @@ import java.util.List;
 
 public class CustomFileReader {
 
-	public List<String> readFromFile(String path) {
+	public List<String> readFromFile(String path) throws IOException {
 
 		// Verificacion de existencia de archivo
 		File archivo = new File(path);
 		if (!archivo.exists()) {
 			System.out.println("No existe");
 		} else {
-			System.out.println("Archivo encontrado: " + archivo);
-			List lista = new ArrayList<String>();
-			lista.add(archivo);
-	
-			System.out.println(lista);
+			BufferedReader inputStream = null;
+			//PrintWriter outputStream = null;
+
+			try {
+				inputStream = new BufferedReader(new FileReader(archivo));
+				//outputStream = new PrintWriter(new FileWriter(salida));
+
+				String l;
+				while ((l = inputStream.readLine()) != null) {
+					//outputStream.println(l);
+					
+					List<String> lista = new ArrayList<String>();
+					lista.add(l);
+					System.out.println(lista);
+					
+				}
+			} finally {
+				if (inputStream != null) {
+					inputStream.close();
+				}
+				//if (outputStream != null) {
+					//outputStream.close();
+				//}
+			}
 		}
 		return null;
 	}
@@ -62,29 +82,6 @@ public class CustomFileReader {
 		 * readLine lee una línea de texto hasta que encuentra un carácter de salto de línea (\n)
 		 * y retorno de carro (\r).
 		 */
-		BufferedReader inputStream = null;
-		PrintWriter outputStream = null;
-
-		try {
-			inputStream = new BufferedReader(new FileReader(entrada));
-			outputStream = new PrintWriter(new FileWriter(entrada));
-
-			String l;
-			while ((l = inputStream.readLine()) != null) {
-				outputStream.println(l);
-				
-				List<String> lista = new ArrayList<String>();
-				lista.add(entrada);
-				System.out.println(lista);
-				
-			}
-		} finally {
-			if (inputStream != null) {
-				inputStream.close();
-			}
-			if (outputStream != null) {
-				outputStream.close();
-			}
-		}
+		
 	}
 }
