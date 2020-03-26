@@ -17,6 +17,16 @@ public class CustomFileReader {
 		if (!archivo.exists()) {
 			System.out.println("No existe");
 		} else {
+			/*
+			 * BufferedReader es una clase que simplifica la lectura de un texto de una secuencia de entrada de caracteres
+			 * almacena los caracteres para permitir una lectura eficiente de los datos de texto.
+			 * PrintWriter es un objeto que nos permite imprimir representaciones formateadas de una salida
+			 * de stream de texto.
+			 * Las clases FileReader y FileWriter permiten leer y escribir, respectivamente, en un fichero
+			 * deben estar dentro de un bloque try
+			 * readLine lee una línea de texto hasta que encuentra un carácter de salto de línea (\n)
+			 * y retorno de carro (\r).
+			 */
 			BufferedReader inputStream = null;
 			//PrintWriter outputStream = null;
 
@@ -42,7 +52,7 @@ public class CustomFileReader {
 			}
 		}
 		
-		return lista;	
+		return lista;
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -70,16 +80,6 @@ public class CustomFileReader {
 		 * 
 		 * }
 		 */
-		/*
-		 * BufferedReader es una clase que simplifica la lectura de un texto de una secuencia de entrada de caracteres
-		 * almacena los caracteres para permitir una lectura eficiente de los datos de texto.
-		 * PrintWriter es un objeto que nos permite imprimir representaciones formateadas de una salida
-		 * de stream de texto.
-		 * Las clases FileReader y FileWriter permiten leer y escribir, respectivamente, en un fichero
-		 * deben estar dentro de un bloque try
-		 * readLine lee una línea de texto hasta que encuentra un carácter de salto de línea (\n)
-		 * y retorno de carro (\r).
-		 */
-		
+		System.out.println(fr.readFromFile(entrada));
 	}
 }
