@@ -2,18 +2,16 @@ package com.bit;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomFileReader {
-
+	
 	public List<String> readFromFile(String path) throws IOException {
-
+		
+		List<String> lista = new ArrayList<>();
 		// Verificacion de existencia de archivo
 		File archivo = new File(path);
 		if (!archivo.exists()) {
@@ -30,9 +28,8 @@ public class CustomFileReader {
 				while ((l = inputStream.readLine()) != null) {
 					//outputStream.println(l);
 					
-					List<String> lista = new ArrayList<String>();
+					
 					lista.add(l);
-					System.out.println(lista);
 					
 				}
 			} finally {
@@ -44,7 +41,8 @@ public class CustomFileReader {
 				//}
 			}
 		}
-		return null;
+		
+		return lista;	
 	}
 
 	public static void main(String[] args) throws IOException {
