@@ -38,7 +38,6 @@ public class CustomFileReader {
 				while ((l = inputStream.readLine()) != null) {
 					//outputStream.println(l);
 					
-					
 					lista.add(l);
 					
 				}
@@ -80,6 +79,8 @@ public class CustomFileReader {
 		 * 
 		 * }
 		 */
-		System.out.println(fr.readFromFile(entrada));
+		for(String i : fr.readFromFile(entrada)) {
+			System.out.println(i);
+		}
 	}
 }
